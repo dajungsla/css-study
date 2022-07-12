@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step18_form2.html</title>
+    <link rel="stylesheet" href="./css/bootstrap.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h1>회원 가입 폼</h1>
+                <form action="signup.jsp">
+                    <div class="mb-2">
+                        <label for="form-label" for="email">이메일</label>
+                        <input class="form-control" type="text" id="email" name="email">
+                        <div class="valid-feedback">올바른 이메일 형식입니다.</div>
+                        <div class="invalid-feedback">이메일 형식에 맞게 입력하세요.</div>
+                    </div>
+                    <div class="mb-2">
+                        <label for="form-label" for="pwd">비밀번호</label>
+                        <input class="form-control" type="password" id="pwd" name="pwd">
+                        <div class="valid-feedback">사용할 수 있는 비밀번호 입니다.</div>
+                        <div class="invalid-feedback">다른 비밀번호를 사용해주세요.</div>
+                        <!--is-valid/invalid의 사용/form-control 뒤에 쓰면 된다.-->
+                    </div>
+                    <button class="btn btn-primary" type="submit">가입</button>
+                </form>
+
+                <script>
+                    document.querySelector("#email").addEventListener("input", function(){
+                        //1. 입력한 이메일 값을 읽어와서
+                        let email=document.querySelector("#email")/*=this*/.value;
+                        //2. 이메일 형식에 맞는지 확인해서
+                        let index=email.indexOf("@");//@문자열이 몇 번째 인덱스에 있는지 확인
+
+                        //3. 맞으면 is-valid class를 추가하고, 틀리면 is-invalid class를 추가
+                        if(index>0){
+                            document.querySelector("#email").classList.add("is-valid");
+                            document.querySelector("#email").classList.remove("is-invalid");}
+                        else{
+                            document.querySelector("#email").classList.add("is-invalid");}
+                    });
+
+                    document.querySelector("#pwd").addEventListener("input", function(){
+                        //1. 입력한 이메일 값을 읽어와서
+                        let pwd=document.querySelector("#pwd")/*=this*/.value;
+                        //2. 이메일 형식에 맞는지 확인해서
+                        let index=pwd.length;//@pwd의 길이 확인﻿
+
+                        //3. 맞으면 is-valid class를 추가하고, 틀리면 is-invalid class를 추가
+                        if(index>10){
+                            document.querySelector("#pwd").classList.add("is-valid");
+                            document.querySelector("#pwd").classList.remove("is-invalid");}
+                        else{
+                            document.querySelector("#pwd").classList.add("is-invalid");}
+                    });
+
+                </script>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
